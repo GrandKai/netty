@@ -26,6 +26,7 @@ public class BIOTest {
         // 让 ServerSocket 一直阻塞，接收新的连接
         while (true) {
             ExecutorService executorService = Executors.newCachedThreadPool();
+            System.out.println("当前线程1：" + Thread.currentThread().getName());
             final Socket socket = serverSocket.accept();
 
             System.out.println("创建新线程，开始执行 ServerSocket：....");
@@ -55,7 +56,7 @@ public class BIOTest {
             int length = 0;
 
             while ((length = inputStream.read(bytes)) != -1) {
-                System.out.println("当前线程：" + Thread.currentThread().getName() + " 循环读取 inputstream :" + length);
+                System.out.println("当前线程2：" + Thread.currentThread().getName() + " 循环读取 inputstream :" + length);
                 System.out.println(new String(bytes, 0, length));
             }
 
